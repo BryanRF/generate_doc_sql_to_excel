@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL a Excel - Diseño Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen font-sans">
+    <header class="bg-blue-900 text-white">
+      <nav class="container mx-auto px-6 py-3">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="/api/placeholder/40/40" alt="Logo" class="h-10 mr-3" />
+            <span class="font-semibold text-xl">DataConverter Pro</span>
+          </div>
+          <div>
+            <a href="#" class="text-gray-300 hover:text-white px-3 py-2"
+              >Inicio</a
+            >
+            <a href="#" class="text-gray-300 hover:text-white px-3 py-2"
+              >Acerca de</a
+            >
+            <a href="#" class="text-gray-300 hover:text-white px-3 py-2"
+              >Contacto</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8">
+      <h1 class="text-4xl font-bold text-center text-blue-900 mb-12">
+        Transformación SQL a Excel
+      </h1>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <img
+            src="/api/placeholder/500/300"
+            alt="Proceso de conversión"
+            class="rounded-lg shadow-xl"
+          />
+        </div>
+        <div class="bg-white rounded-lg shadow-xl p-8">
+          <h2 class="text-2xl font-semibold mb-6 text-blue-800">
+            Inicia tu conversión
+          </h2>
+          <form>
+            <div class="mb-6">
+              <label for="sqlFile" class="block text-gray-700 font-medium mb-2"
+                >Selecciona tu archivo SQL:</label
+              >
+              <div class="flex items-center justify-center w-full">
+                <label
+                  for="sqlFile"
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6"
+                  >
+                    <i
+                      class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-3"
+                    ></i>
+                    <p class="mb-2 text-sm text-gray-500">
+                      <span class="font-semibold">Haz clic para subir</span> o
+                      arrastra y suelta
+                    </p>
+                    <p class="text-xs text-gray-500">SQL (máx. 10MB)</p>
+                  </div>
+                  <input
+                    id="sqlFile"
+                    type="file"
+                    class="hidden"
+                    accept=".sql"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center"
+              >
+                <i class="fas fa-sync-alt mr-2"></i> Convertir a Excel
+              </button>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm"
+                >¿Necesitas ayuda?</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-gray-100 border-t mt-12">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600 text-sm">
+            &copy; 2024 DataConverter Pro. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

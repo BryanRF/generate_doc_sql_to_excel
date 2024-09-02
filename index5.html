@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL a Excel - Diseño Material</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 min-h-screen font-sans">
+    <div class="bg-blue-600 text-white shadow-md">
+      <div class="container mx-auto px-4 py-3">
+        <h1 class="text-2xl font-medium">SQL a Excel Converter</h1>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+      <div
+        class="bg-white rounded-lg shadow-lg overflow-hidden"
+        x-data="{ activeTab: 'input', loading: false }"
+      >
+        <div class="flex border-b">
+          <button
+            @click="activeTab = 'input'"
+            :class="{ 'bg-blue-500 text-white': activeTab === 'input' }"
+            class="flex-1 py-4 px-6 text-center font-medium focus:outline-none transition duration-300"
+          >
+            <i class="material-icons align-middle mr-2">code</i> Entrada
+          </button>
+          <button
+            @click="activeTab = 'output'"
+            :class="{ 'bg-blue-500 text-white': activeTab === 'output' }"
+            class="flex-1 py-4 px-6 text-center font-medium focus:outline-none transition duration-300"
+          >
+            <i class="material-icons align-middle mr-2">table_chart</i> Salida
+          </button>
+          <button
+            @click="activeTab = 'dictionary'"
+            :class="{ 'bg-blue-500 text-white': activeTab === 'dictionary' }"
+            class="flex-1 py-4 px-6 text-center font-medium focus:outline-none transition duration-300"
+          >
+            <i class="material-icons align-middle mr-2">book</i> Diccionario
+          </button>
+        </div>
+
+        <div class="p-6">
+          <div x-show="activeTab === 'input'">
+            <h3 class="text-xl font-semibold mb-4">Formato SQL de Entrada</h3>
+            <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto">
+CREATE TABLE empleados (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    cargo VARCHAR(50),
+    salario DECIMAL(10, 2),
+    fecha_contratacion DATE
+);
+                    </pre
+            >
+          </div>
+
+          <div x-show="activeTab === 'output'">
+            <h3 class="text-xl font-semibold mb-4">
+              Vista Previa del Resultado en Excel
+            </h3>
+            <img
+              src="/api/placeholder/600/300"
+              alt="Excel Preview"
+              class="rounded-lg shadow-md w-full"
+            />
+          </div>
+
+          <div x-show="activeTab === 'dictionary'">
+            <h3 class="text-xl font-semibold mb-4">Diccionario de Datos</h3>
+            <div class="overflow-x-auto">
+              <table class="min-w-full bg-white">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-4 text-left">Columna</th>
+                    <th class="py-3 px-4 text-left">Tipo</th>
+                    <th class="py-3 px-4 text-left">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-3 px-4 border-b">id</td>
+                    <td class="py-3 px-4 border-b">INT</td>
+                    <td class="py-3 px-4 border-b">
+                      Identificador único del empleado
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-b">nombre</td>
+                    <td class="py-3 px-4 border-b">VARCHAR(100)</td>
+                    <td class="py-3 px-4 border-b">
+                      Nombre completo del empleado
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-b">cargo</td>
+                    <td class="py-3 px-4 border-b">VARCHAR(50)</td>
+                    <td class="py-3 px-4 border-b">
+                      Cargo o posición del empleado
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-b">salario</td>
+                    <td class="py-3 px-4 border-b">DECIMAL(10, 2)</td>
+                    <td class="py-3 px-4 border-b">
+                      Salario anual del empleado
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4">fecha_contratacion</td>
+                    <td class="py-3 px-4">DATE</td>
+                    <td class="py-3 px-4">Fecha de inicio del empleado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <form
+            class="mt-6"
+            @submit.prevent="loading = true; setTimeout(() => loading = false, 3000)"
+          >
+            <div class="mb-4">
+              <label for="sqlFile" class="block text-gray-700 font-medium mb-2"
+                >Selecciona tu archivo .SQL:</label
+              >
+              <div class="relative">
+                <input
+                  type="file"
+                  id="sqlFile"
+                  name="sqlFile"
+                  accept=".sql"
+                  class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                <div
+                  class="bg-blue-50 border-2 border-blue-200 border-dashed rounded-lg p-4 text-center"
+                >
+                  <i class="material-icons text-blue-500 text-3xl mb-2"
+                    >cloud_upload</i
+                  >
+                  <p class="text-blue-600">
+                    Arrastra tu archivo aquí o haz clic para seleccionar
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+            >
+              <i class="material-icons mr-2">transform</i> Convertir a Excel
+            </button>
+          </form>
+
+          <!-- Loading overlay -->
+          <div
+            x-show="loading"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          >
+            <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
+              <div class="flex items-center justify-center mb-4">
+                <div
+                  class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"
+                ></div>
+              </div>
+              <p class="text-center text-xl font-semibold mb-4">
+                Transformando SQL a Excel...
+              </p>
+              <div class="bg-gray-100 p-4 rounded-lg">
+                <p class="text-sm text-gray-600 text-center mb-2">
+                  Mientras esperas, echa un vistazo a:
+                </p>
+                <img
+                  src="/api/placeholder/300/100"
+                  alt="Ad Space"
+                  class="mx-auto rounded"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

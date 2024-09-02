@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL a Excel - Diseño Neomorfismo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+    <style>
+      .neu-shadow {
+        box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+      }
+      .neu-inset {
+        box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen font-sans p-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+        SQL a Excel Transformer
+      </h1>
+
+      <div
+        class="bg-gray-100 rounded-2xl p-8 neu-shadow"
+        x-data="{ activeView: 'input', loading: false }"
+      >
+        <div class="flex space-x-4 mb-6">
+          <button
+            @click="activeView = 'input'"
+            :class="{ 'bg-blue-500 text-white': activeView === 'input' }"
+            class="flex-1 py-3 px-4 rounded-xl neu-shadow focus:outline-none transition duration-300 text-center"
+          >
+            Entrada SQL
+          </button>
+          <button
+            @click="activeView = 'output'"
+            :class="{ 'bg-blue-500 text-white': activeView === 'output' }"
+            class="flex-1 py-3 px-4 rounded-xl neu-shadow focus:outline-none transition duration-300 text-center"
+          >
+            Vista Excel
+          </button>
+          <button
+            @click="activeView = 'dictionary'"
+            :class="{ 'bg-blue-500 text-white': activeView === 'dictionary' }"
+            class="flex-1 py-3 px-4 rounded-xl neu-shadow focus:outline-none transition duration-300 text-center"
+          >
+            Diccionario
+          </button>
+        </div>
+
+        <div class="mb-6">
+          <div
+            x-show="activeView === 'input'"
+            class="bg-white p-6 rounded-xl neu-inset"
+          >
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">
+              Formato SQL de Entrada
+            </h3>
+            <pre
+              class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto neu-inset"
+            >
+CREATE TABLE ventas (
+    id INT PRIMARY KEY,
+    producto VARCHAR(100),
+    cantidad INT,
+    precio DECIMAL(10, 2),
+    fecha_venta DATE
+);
+                    </pre
+            >
+          </div>
+
+          <div
+            x-show="activeView === 'output'"
+            class="bg-white p-6 rounded-xl neu-inset"
+          >
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">
+              Vista Previa del Resultado en Excel
+            </h3>
+            <img
+              src="/api/placeholder/600/300"
+              alt="Excel Preview"
+              class="rounded-lg w-full neu-shadow"
+            />
+          </div>
+
+          <div
+            x-show="activeView === 'dictionary'"
+            class="bg-white p-6 rounded-xl neu-inset"
+          >
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">
+              Diccionario de Datos
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr class="bg-gray-100">
+                    <th class="py-3 px-4 text-left rounded-tl-lg">Columna</th>
+                    <th class="py-3 px-4 text-left">Tipo</th>
+                    <th class="py-3 px-4 text-left rounded-tr-lg">
+                      Descripción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-3 px-4 border-t">id</td>
+                    <td class="py-3 px-4 border-t">INT</td>
+                    <td class="py-3 px-4 border-t">
+                      Identificador único de la venta
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-t">producto</td>
+                    <td class="py-3 px-4 border-t">VARCHAR(100)</td>
+                    <td class="py-3 px-4 border-t">
+                      Nombre del producto vendido
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-t">cantidad</td>
+                    <td class="py-3 px-4 border-t">INT</td>
+                    <td class="py-3 px-4 border-t">
+                      Cantidad de unidades vendidas
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-t">precio</td>
+                    <td class="py-3 px-4 border-t">DECIMAL(10, 2)</td>
+                    <td class="py-3 px-4 border-t">
+                      Precio unitario del producto
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 border-t">fecha_venta</td>
+                    <td class="py-3 px-4 border-t">DATE</td>
+                    <td class="py-3 px-4 border-t">
+                      Fecha en que se realizó la venta
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <form
+          @submit.prevent="loading = true; setTimeout(() => loading = false, 3000)"
+        >
+          <div class="mb-6">
+            <label for="sqlFile" class="block text-gray-700 font-medium mb-2"
+              >Selecciona tu archivo .SQL:</label
+            >
+            <div class="relative">
+              <input
+                type="file"
+                id="sqlFile"
+                name="sqlFile"
+                accept=".sql"
+                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              />
+              <div
+                class="bg-white border-2 border-gray-300 border-dashed rounded-xl p-6 text-center neu-inset"
+              >
+                <p class="text-gray-600">
+                  Arrastra tu archivo aquí o haz clic para seleccionar
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
