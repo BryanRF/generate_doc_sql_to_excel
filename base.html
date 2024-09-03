@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio de Desarrollador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          font-family: "Fira Code", monospace;
+        }
+      }
+      @layer utilities {
+        .bg-matrix {
+          background-color: #000000;
+          background-image: linear-gradient(
+              rgba(0, 255, 0, 0.03) 2px,
+              transparent 2px
+            ),
+            linear-gradient(90deg, rgba(0, 255, 0, 0.03) 2px, transparent 2px);
+          background-size: 50px 50px;
+        }
+        .terminal-window {
+          background-color: #0c0c0c;
+          border: 1px solid #00ff00;
+          box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-green-400">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-4xl font-bold mb-8 text-center text-green-500">
+        Portafolio de Desarrollador
+      </h1>
+
+      <!-- Opción 1: Terminal Style -->
+      <div
+        class="mb-12 bg-black rounded-lg overflow-hidden shadow-lg p-6 terminal-window"
+      >
+        <div class="flex items-center mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="mb-4">
+          <span class="text-green-500">$ cat projects.json</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-4 rounded">
+            <img
+              src="/api/placeholder/400/200"
+              alt="Proyecto 1"
+              class="w-full h-32 object-cover mb-2 rounded"
+            />
+            <h3 class="text-xl font-semibold mb-2">ML Image Classifier</h3>
+            <div class="flex space-x-2 mt-2">
+              <a
+                href="#"
+                class="bg-blue-600 text-white px-2 py-1 rounded text-sm hover:bg-blue-700"
+                >README</a
+              >
+              <a
+                href="#"
+                class="bg-green-600 text-white px-2 py-1 rounded text-sm hover:bg-green-700"
+                >Demo</a
+              >
+            </div>
+          </div>
+          <div class="bg-gray-800 p-4 rounded">
+            <img
+              src="/api/placeholder/400/200"
+              alt="Proyecto 2"
+              class="w-full h-32 object-cover mb-2 rounded"
+            />
+            <h3 class="text-xl font-semibold mb-2">AI Chatbot</h3>
+            <div class="flex space-x-2 mt-2">
+              <a
+                href="#"
+                class="bg-blue-600 text-white px-2 py-1 rounded text-sm hover:bg-blue-700"
+                >README</a
+              >
+              <a
+                href="#"
+                class="bg-green-600 text-white px-2 py-1 rounded text-sm hover:bg-green-700"
+                >Demo</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 2: Code Editor Inspired -->
+      <div
+        class="mb-12 bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-indigo-500"
+      >
+        <div class="bg-gray-800 p-2 flex justify-between items-center">
+          <div class="flex space-x-2">
+            <span class="px-2 py-1 bg-indigo-600 text-white text-xs rounded"
+              >portfolio.py</span
+            >
+            <span class="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded"
+              >skills.py</span
+            >
+          </div>
+          <div class="text-gray-400 text-sm">Python 3.9.5</div>
+        </div>
+        <div class="p-6 font-mono">
+          <p class="text-pink-400">
+            def <span class="text-yellow-300">display_projects</span>():
+          </p>
+          <div class="pl-4 mt-2 space-y-4">
+            <div class="bg-gray-800 p-4 rounded">
+              <img
+                src="/api/placeholder/400/200"
+                alt="Proyecto 3"
+                class="w-full h-32 object-cover mb-2 rounded"
+              />
+              <p class="text-blue-300">
+                project_name =
+                <span class="text-green-300">"Deep Learning NLP"</span>
+              </p>
+              <p class="text-blue-300">
+                description =
+                <span class="text-green-300"
+                  >"Natural Language Processing model for sentiment
+                  analysis"</span
+                >
+              </p>
+              <div class="flex space-x-2 mt-2">
+                <a
+                  href="#"
+                  class="bg-purple-600 text-white px-2 py-1 rounded text-sm hover:bg-purple-700"
+                  >README</a
+                >
+                <a
+                  href="#"
+                  class="bg-yellow-600 text-white px-2 py-1 rounded text-sm hover:bg-yellow-700"
+                  >Demo</a
+                >
+              </div>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+              <img
+                src="/api/placeholder/400/200"
+                alt="Proyecto 4"
+                class="w-full h-32 object-cover mb-2 rounded"
+              />
+              <p class="text-blue-300">
+                project_name =
+                <span class="text-green-300">"Computer Vision App"</span>
+              </p>
+              <p class="text-blue-300">
+                description =
+                <span class="text-green-300"
+                  >"Object detection using YOLO algorithm"</span
+                >
+              </p>
+              <div class="flex space-x-2 mt-2">
+                <a
+                  href="#"
+                  class="bg-purple-600 text-white px-2 py-1 rounded text-sm hover:bg-purple-700"
+                  >README</a
+                >
+                <a
+                  href="#"
+                  class="bg-yellow-600 text-white px-2 py-1 rounded text-sm hover:bg-yellow-700"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 3: Matrix Inspired -->
+      <div class="mb-12 bg-matrix rounded-lg overflow-hidden shadow-lg p-6">
+        <h2 class="text-3xl font-bold mb-6 text-green-400">// Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="bg-black bg-opacity-70 p-4 rounded border border-green-500"
+          >
+            <img
+              src="/api/placeholder/400/200"
+              alt="Proyecto 5"
+              class="w-full h-32 object-cover mb-2 rounded"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-green-300">
+              Predictive Analytics Tool
+            </h3>
+            <p class="text-green-200 mb-2">
+              Machine learning model for business forecasting
+            </p>
+            <div class="flex space-x-2 mt-2">
+              <a
+                href="#"
+                class="bg-green-700 text-white px-2 py-1 rounded text-sm hover:bg-green-600"
+                >README</a
+              >
+              <a
+                href="#"
+                class="bg-blue-700 text-white px-2 py-1 rounded text-sm hover:bg-blue-600"
+                >Demo</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-black bg-opacity-70 p-4 rounded border border-green-500"
+          >
+            <img
+              src="/api/placeholder/400/200"
+              alt="Proyecto 6"
+              class="w-full h-32 object-cover mb-2 rounded"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-green-300">
+              Autonomous Drone System
+            </h3>
+            <p class="text-green-200 mb-2">
+              AI-powered navigation and object avoidance
+            </p>
+            <div class="flex space-x-2 mt-2">
+              <a
+                href="#"
+                class="bg-green-700 text-white px-2 py-1 rounded text-sm hover:bg-green-600"
+                >README</a
+              >
+              <a
+                href="#"
+                class="bg-blue-700 text-white px-2 py-1 rounded text-sm hover:bg-blue-600"
+                >Demo</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

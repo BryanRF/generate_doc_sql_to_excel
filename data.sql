@@ -1,24 +1,25 @@
 CREATE TABLE Clientes (
+    estado ENUM ('PENDIENTE', 'COMPLETADO', 'CANCELADO') DEFAULT 'PENDIENTE',
+    estadito ENUM('PENDIENTE', 'COMPLETADO', 'CANCELADO') DEFAULT 'PENDIENTE',
     id INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,-- Comentario sobre la siguiente línea
     fecha_nacimiento DATE,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     activo BOOLEAN DEFAULT TRUE,
     tipo_cliente CHAR(1) DEFAULT 'N',
     id_referido INT,
-    -- Comentario sobre la siguiente línea
     CONSTRAINT FK_Cliente_Referido FOREIGN KEY (id_referido) REFERENCES Clientes(id)
 );
 
 CREATE TABLE Employees (
     emp_id INT PRIMARY KEY, -- Identificador único de empleado
     emp_name VARCHAR(100) NOT NULL,
-    emp_email VARCHAR(100) UNIQUE,
+    emp_email VARCHAR(100) UNIQUE,    -- Relación con el departamento
     dept_id INT,
     salary DECIMAL(15, 2) CHECK (salary > 0),
     start_date DATE DEFAULT '2000-01-01',
-    -- Relación con el departamento
+
     CONSTRAINT FK_Employee_Dept FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
 );
 

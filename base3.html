@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brayan - Ingeniero de Sistemas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg-color: #0d1117;
+        --text-color: #c9d1d9;
+        --primary-color: #58a6ff;
+        --secondary-color: #8b949e;
+        --accent-cyan: #00ffff;
+        --accent-purple: #8a2be2;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+      }
+
+      .floating-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .floating-shapes div {
+        position: absolute;
+        background-color: var(--accent-cyan);
+        opacity: 0.1;
+        border-radius: 50%;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .skill {
+        background-color: var(--secondary-color);
+        color: var(--bg-color);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+      }
+
+      .skill:hover {
+        transform: translateY(-5px);
+        background-color: var(--accent-purple);
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .project {
+        background-color: #161b22;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .project:hover {
+        transform: translateY(-10px);
+      }
+
+      .project img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+      }
+
+      .project-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+
+      .project-links a {
+        text-decoration: none;
+        color: var(--accent-cyan);
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .project-links a:hover {
+        color: var(--accent-purple);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1rem 0;
+        background-color: #161b22;
+      }
+
+      #typed-text {
+        min-height: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="floating-shapes"></div>
+        <h1>Brayan</h1>
+        <p class="subtitle">Ingeniero de Sistemas</p>
+        <div id="typed-text"></div>
+      </header>
+
+      <section class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">Vue.js</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">HTML/CSS</div>
+        <div class="skill">Git</div>
+      </section>
+
+      <section class="projects">
+        <div class="project">
+          <img src="image.png" alt="Proyecto 1" />
+          <div class="project-info">
+            <h3>Proyecto 1</h3>
+            <p>Descripción breve del proyecto 1.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">README</a>
+              <a href="#" target="_blank">Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="project">
+          <img src="image.png" alt="Proyecto 2" />
+          <div class="project-info">
+            <h3>Proyecto 2</h3>
+            <p>Descripción breve del proyecto 2.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">README</a>
+              <a href="#" target="_blank">Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="project">
+          <img src="image.png" alt="Proyecto 3" />
+          <div class="project-info">
+            <h3>Proyecto 3</h3>
+            <p>Descripción breve del proyecto 3.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">README</a>
+              <a href="#" target="_blank">Demo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Brayan - Ingeniero de Sistemas. Todos los derechos
+        reservados.
+      </p>
+    </footer>
+
+    <script>
+      // Animación de formas flotantes
+      function createFloatingShapes() {
+        const container = document.querySelector(".floating-shapes");
+        const shapes = 20;
+
+        for (let i = 0; i < shapes; i++) {
+          const shape = document.createElement("div");
+          const size = Math.random() * 50 + 10;
+          shape.style.width = `${size}px`;
+          shape.style.height = `${size}px`;
+          shape.style.left = `${Math.random() * 100}%`;
+          shape.style.top = `${Math.random() * 100}%`;
+
+          container.appendChild(shape);
+
+          gsap.to(shape, {
+            x: `random(-50, 50)`,
+            y: `random(-50, 50)`,
+            duration: `random(5, 10)`,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+        }
+      }
+
+      // Efecto de escritura
+      function typeWriter(text, element, speed = 50) {
+        let i = 0;
+        function type() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }
+
+      // Inicializar animaciones
+      document.addEventListener("DOMContentLoaded", () => {
+        createFloatingShapes();
+        const typedText = document.getElementById("typed-text");
+        typeWriter("Desarrollando soluciones innovadoras", typedText);
+      });
+
+      // Animación de entrada para proyectos
+      gsap.from(".project", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".projects",
+          start: "top 80%",
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brayan - Ingeniero de Sistemas</title>
+    <style>
+      :root {
+        --bg-dark: #1e1e1e;
+        --text-primary: #d4d4d4;
+        --text-secondary: #9cdcfe;
+        --accent-green: #4ec9b0;
+        --accent-yellow: #dcdcaa;
+        --accent-blue: #569cd6;
+        --line-number: #858585;
+        --comment: #6a9955;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Consolas", "Courier New", monospace;
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--text-secondary);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent-green);
+      }
+
+      .code-block {
+        background-color: #252526;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+      }
+
+      .line {
+        display: flex;
+      }
+
+      .line-number {
+        color: var(--line-number);
+        margin-right: 10px;
+        user-select: none;
+      }
+
+      .keyword {
+        color: var(--accent-blue);
+      }
+
+      .function {
+        color: var(--accent-yellow);
+      }
+
+      .string {
+        color: var(--accent-green);
+      }
+
+      .comment {
+        color: var(--comment);
+      }
+
+      h2 {
+        color: var(--accent-yellow);
+        margin-bottom: 15px;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .project {
+        background-color: #252526;
+        border-radius: 5px;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .project:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .project h3 {
+        color: var(--accent-green);
+        margin-bottom: 10px;
+      }
+
+      .project img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 3px;
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: var(--accent-blue);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: var(--accent-green);
+      }
+
+      form {
+        display: grid;
+        gap: 15px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        background-color: #3c3c3c;
+        border: 1px solid var(--text-secondary);
+        color: var(--text-primary);
+        border-radius: 3px;
+      }
+
+      footer {
+        margin-top: 40px;
+        text-align: center;
+        color: var(--comment);
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <div class="logo">brayan.dev</div>
+          <ul>
+            <li><a href="#about">about</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section id="about">
+          <div class="code-block">
+            <div class="line">
+              <span class="line-number">1</span>
+              <span class="keyword">class</span>
+              <span class="function">Developer</span>:
+            </div>
+            <div class="line">
+              <span class="line-number">2</span>
+              <span class="keyword"> def</span>
+              <span class="function">__init__</span>(self):
+            </div>
+            <div class="line">
+              <span class="line-number">3</span>
+              <span> self.name = </span><span class="string">"Brayan"</span>
+            </div>
+            <div class="line">
+              <span class="line-number">4</span>
+              <span> self.role = </span
+              ><span class="string">"Full-Stack Developer"</span>
+            </div>
+            <div class="line">
+              <span class="line-number">5</span>
+              <span> self.skills = [</span><span class="string">"Python"</span>,
+              <span class="string">"JavaScript"</span>,
+              <span class="string">"Vue.js"</span>,
+              <span class="string">"Node.js"</span>,
+              <span class="string">"SQL"</span>]
+            </div>
+            <div class="line">
+              <span class="line-number">6</span>
+              <span> self.education = </span
+              ><span class="string"
+                >"Ingeniero de Sistemas - Universidad USS"</span
+              >
+            </div>
+            <div class="line">
+              <span class="line-number">7</span>
+              <span class="keyword"> def</span>
+              <span class="function">code</span>(self):
+            </div>
+            <div class="line">
+              <span class="line-number">8</span>
+              <span> </span><span class="keyword">return</span>
+              <span class="string"
+                >"Building innovative solutions one line at a time"</span
+              >
+            </div>
+            <div class="line">
+              <span class="line-number">9</span>
+              <span class="comment">
+                # Passionate about clean code and problem-solving</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h2>$ ls projects/</h2>
+          <div class="projects">
+            <div class="project">
+              <h3>project_1.py</h3>
+              <img src="image.png" alt="Project 1" />
+              <p>
+                Description of project 1. Innovative solution for XYZ problem.
+              </p>
+              <a href="#" class="btn">View Code</a>
+            </div>
+            <div class="project">
+              <h3>project_2.js</h3>
+              <img src="image.png" alt="Project 2" />
+              <p>
+                Description of project 2. Web application built with Vue.js.
+              </p>
+              <a href="#" class="btn">View Code</a>
+            </div>
+            <div class="project">
+              <h3>project_3.sql</h3>
+              <img src="image.png" alt="Project 3" />
+              <p>
+                Description of project 3. Database optimization for large-scale
+                systems.
+              </p>
+              <a href="#" class="btn">View Code</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>$ ./contact.sh</h2>
+          <div class="code-block">
+            <form>
+              <input
+                type="text"
+                placeholder="name = input('Your name: ')"
+                required
+              />
+              <input
+                type="email"
+                placeholder="email = input('Your email: ')"
+                required
+              />
+              <textarea
+                placeholder="message = input('Your message: ')"
+                rows="5"
+                required
+              ></textarea>
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2024 Brayan.dev | All rights reserved | Compiled with ❤️</p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Efecto de escritura para el bloque de código "about"
+        const codeLines = document.querySelectorAll("#about .line");
+        codeLines.forEach((line, index) => {
+          line.style.opacity = "0";
+          setTimeout(() => {
+            line.style.transition = "opacity 0.5s ease";
+            line.style.opacity = "1";
+          }, index * 100);
+        });
+
+        // Efecto de aparición para los proyectos
+        const projects = document.querySelectorAll(".project");
+        projects.forEach((project, index) => {
+          project.style.opacity = "0";
+          project.style.transform = "translateY(20px)";
+          setTimeout(() => {
+            project.style.transition = "all 0.5s ease";
+            project.style.opacity = "1";
+            project.style.transform = "translateY(0)";
+          }, 1000 + index * 200); // Comienza después de que termine la animación del código
+        });
+      });
+    </script>
+  </body>
+</html>

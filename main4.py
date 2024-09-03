@@ -244,7 +244,7 @@ class ExcelGenerator:
     def fill_data(ws, table):
         for row, (column_name, column) in enumerate(table.columns.items(), start=2):
             ws.cell(row=row, column=1, value=SQLParser.clean_value(column.name)).alignment = Alignment(horizontal='center')
-            ws.cell(row=row, column=2, value=SQLParser.clean_value(column.data_type).split()[0]).alignment = Alignment(horizontal='center')
+            ws.cell(row=row, column=2, value=SQLParser.clean_value(column.data_type)).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=3, value=SQLParser.clean_value(column.length)).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=4, value=SQLParser.clean_value(', '.join(column.column_type))).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=5, value=SQLParser.clean_value(column.default_value)).alignment = Alignment(horizontal='center')
