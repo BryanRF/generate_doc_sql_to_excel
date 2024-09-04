@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio de Desarrollador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        @keyframes neonPulse {
+            0%, 50% { text-shadow: 0 0 7px #58a6ff, 0 0 10px #58a6ff, 0 0 21px #58a6ff; }
+            50% { text-shadow: 0 0 5px #58a6ff, 0 0 7px #58a6ff, 0 0 15px #58a6ff; }
+        }
+        .neon-text {
+            animation: neonPulse 1.5s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .typing-effect::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .floating-shapes {
+    position: fixed; /* Para que esté siempre en el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Asegura que cubra toda la altura de la ventana */
+    pointer-events: none; /* Para evitar que interfiera con otros elementos interactivos */
+    z-index: -1; /* Debajo de todo el contenido */
+}
+
+      .floating-shapes div {
+            position: absolute;
+            background-color: #00ffff; /* Cian neón */
+            opacity: 0.3;
+            border-radius: 50%;
+        }
+        .bg-matrix {
+          background-color: #000000;
+          background-image: linear-gradient(
+              rgba(0, 255, 0, 0.03) 2px,
+              transparent 2px
+            ),
+            linear-gradient(90deg, rgba(0, 255, 0, 0.03) 2px, transparent 2px);
+          background-size: 50px 50px;
+        }
+        .terminal-window {
+          background-color: #0c0c0c;
+          border: 1px solid #00ff00;
+          box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+    
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen font-mono">
+    <nav class="bg-gray-800 p-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold neon-text text-blue-400">&lt;MiPortfolio /&gt;</h1>
+            <ul class="flex space-x-4">
+                <li><a href="#proyectos" class="hover:text-blue-400 transition duration-300">&lt;Proyectos /&gt;</a></li>
+                <li><a href="#sobre-mi" class="hover:text-blue-400 transition duration-300">&lt;SobreMi /&gt;</a></li>
+                <li><a href="#contacto" class="hover:text-blue-400 transition duration-300">&lt;Contacto /&gt;</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="text-center py-20 bg-gray-800">
+        <div class="floating-shapes"></div>
+        <h2 class="text-5xl font-bold mb-4 neon-text text-blue-400 typing-effect" id="typing-header">Desarrollador Full Stack</h2>
+        <p class="text-xl">$Brayan-Rojas-Freyre create-awesome-solutions</p>
+
+    </header>
+
+    <main class="container mx-auto mt-12 p-4 ">
+        <div class="floating-shapes"></div>
+        <section id="proyectos" class="mb-16 ">
+            <h3 class="text-3xl font-bold mb-8 neon-text text-blue-400">&lt;Mis Proyectos /&gt;</h3>
+         
+            <div class="hidden flex justify-center mt-4">
+                <button id="prevBtn" class=" hidden bg-blue-600 text-gray-900 py-2 px-4 rounded mr-2 hover:bg-blue-500 transition duration-300">&lt; Anterior</button>
+                <button id="nextBtn" class="hidden bg-blue-600 text-gray-900 py-2 px-4 rounded hover:bg-blue-500 transition duration-300">Siguiente &gt;</button>
+            </div>
+        </section>
+        <div
+        class="mb-12 bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-indigo-500"
+      >
+        <div class="bg-gray-800 p-2 flex justify-between items-center">
+          <div class="flex space-x-2">
+            <span class="px-2 py-1 bg-indigo-600 text-white text-xs rounded"
+              >portfolio.py</span
+            >
+            <span class="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded"
+              >skills.py</span
+            >
+          </div>
+          <div class="text-gray-400 text-sm">Python 3.9.5</div>
+        </div>
+        <div class="bg-black bg-opacity-70 p-6 font-mono">
+          <p class="text-pink-400">
+            def <span class="text-yellow-300">display_projects</span>():
+          </p>
+          <div class="pl-4 mt-2 space-y-4">
+            <div class="bg-gray-800 p-4 rounded">
+              <img
+                src="image.png"
+                alt="Proyecto 3"
+                class="w-full h-32 object-cover mb-2 rounded"
+              />
+              <h3 class="text-xl font-semibold mb-2 text-green-300">
+                Autonomous Drone System
+              </h3>
+              <p class="text-blue-300">
+                description =
+                <span class="text-green-300"
+                  >"Natural Language Processing model for sentiment
+                  analysis"</span
+                >
+              </p>
+              <div class="flex space-x-2 mt-2">
+                <a
+                  href="#"
+                  class="bg-purple-600 text-white px-2 py-1 rounded text-sm hover:bg-purple-700"
+                  >README</a
+                >
+                <a
+                  href="#"
+                  class="bg-yellow-600 text-white px-2 py-1 rounded text-sm hover:bg-yellow-700"
+                  >Demo</a
+                >
+              </div>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+              <img
+                src="image.png"
+                alt="Proyecto 4"
+                class="w-full h-32 object-cover mb-2 rounded"
+              />
+              <h3 class="text-xl font-semibold mb-2 text-green-300">
+                Autonomous Drone System
+              </h3>
+              <p class="text-blue-300">
+                description =
+                <span class="text-green-300"
+                  >"Object detection using YOLO algorithm"</span
+                >
+              </p>
+              <div class="flex space-x-2 mt-2">
+                <a
+                  href="#"
+                  class="bg-purple-600 text-white px-2 py-1 rounded text-sm hover:bg-purple-700"
+                  >README</a
+                >
+                <a
+                  href="#"
+                  class="bg-yellow-600 text-white px-2 py-1 rounded text-sm hover:bg-yellow-700"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section id="sobre-mi" class="py-16 ">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-12 neon-text text-blue-400 text-center">&lt;Sobre Mí /&gt;</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center">
+                    <div class="photo-border rounded-full">
+                        <img src="tu-foto.png" alt="Tu Nombre" class="w-64 h-64 rounded-full object-cover border-4 border-gray-900">
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-bold mb-4 text-blue-400">Hola, soy <span class="neon-text">Brayan Rojas Freyre</span></h4>
+                    <p class="mb-6 text-lg">Desarrollador Full Stack apasionado por crear soluciones innovadoras y escalables. Con más de 2 años de experiencia, disfruto enfrentando nuevos desafíos y aprendiendo constantemente.</p>
+                    <div class="mb-6">
+                        <h5 class="text-xl font-semibold mb-2 text-blue-400">Mis habilidades incluyen:</h5>
+                        <ul class="grid grid-cols-2 gap-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>JavaScript</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Python</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>React</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Node.js</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>SQL</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Git</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-semibold mb-2 text-blue-400">Datos curiosos:</h5>
+                        <ul class="space-y-2">
+                            <li><i class="fas fa-coffee text-yellow-600 mr-2"></i>Adicto al café</li>
+                            <li><i class="fas fa-book text-indigo-400 mr-2"></i>Lector ávido de ciencia ficción</li>
+                            <li><i class="fas fa-gamepad text-red-500 mr-2"></i>Gamer en mis tiempos libres</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+        <section id="contacto" class="py-16 bg-dark">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl font-bold mb-8 neon-text text-blue-400 text-center">&lt;Contactame /&gt;</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Formulario de contacto -->
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold mb-4 text-blue-400">Envíame un mensaje</h4>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium mb-1">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="w-full px-3 py-2 bg-gray-800 text-gray-300 rounded border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Email:</label>
+                                <input type="email" id="email" name="email" class="w-full px-3 py-2 bg-gray-800 text-gray-300 rounded border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="mensaje" class="block text-sm font-medium mb-1">Mensaje:</label>
+                                <textarea id="mensaje" name="mensaje" rows="4" class="w-full px-3 py-2 bg-gray-800 text-gray-300 rounded border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-300" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-gray-900 py-2 px-4 rounded hover:bg-blue-500 transition duration-300 transform hover:scale-105">
+                                Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Información de contacto y redes sociales -->
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-blue-400">Conéctate conmigo</h4>
+                            <p class="mb-4">Estoy siempre interesado en nuevos proyectos y oportunidades. ¡No dudes en contactarme!</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                                    <a href="mailto:tu@email.com" class="hover:text-blue-400 transition duration-300">tu@email.com</a>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                                    <span>Tu Ciudad, País</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <h5 class="text-lg font-semibold mb-4 text-blue-400">Sígueme en:</h5>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110">
+                                    <i class="fab fa-github fa-2x"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110">
+                                    <i class="fab fa-linkedin fa-2x"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110">
+                                    <i class="fab fa-twitter fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-center py-4 mt-12">
+        <p>&copy; 2024 MiPortfolio. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Efecto de escritura para el encabezado
+        const header = document.getElementById('typing-header');
+        const text = header.textContent;
+        header.textContent = '';
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                header.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        typeWriter();
+
+        // Carrusel de proyectos
+        const carousel = document.getElementById('carousel');
+        const inner = document.getElementById('carousel-inner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + 3) % 3;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % 3;
+            updateCarousel();
+        });
+
+        // Animación de entrada para los elementos
+        const animatedElements = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animación de formas flotantes
+        function createFloatingShapes() {
+          const container = document.querySelector(".floating-shapes");
+          const shapes = 40;
+  
+          for (let i = 0; i < shapes; i++) {
+            const shape = document.createElement("div");
+            const size = Math.random() * 50 + 10;
+            shape.style.width = `${size}px`;
+            shape.style.height = `${size}px`;
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.top = `${Math.random() * 100}%`;
+  
+            container.appendChild(shape);
+  
+            gsap.to(shape, {
+              x: `random(-50, 50)`,
+              y: `random(-50, 50)`,
+              duration: `random(5, 10)`,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+            });
+          }
+        }
+  
+        document.addEventListener("DOMContentLoaded", () => {
+        createFloatingShapes();
+      
+      });
+      </script>
+</body>
+</html>

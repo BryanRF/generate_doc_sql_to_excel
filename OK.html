@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio de Desarrollador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 7px #58a6ff, 0 0 10px #58a6ff, 0 0 21px #58a6ff; }
+            50% { text-shadow: 0 0 5px #58a6ff, 0 0 7px #58a6ff, 0 0 15px #58a6ff; }
+        }
+        .neon-text {
+            animation: neonPulse 1.5s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .typing-effect::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .photo-border {
+            background: linear-gradient(45deg, #58a6ff, #3178c6);
+            padding: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen font-mono">
+    <!-- El contenido anterior del body permanece igual -->
+
+    <section id="sobre-mi" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-12 neon-text text-blue-400 text-center">&lt;Sobre Mí /&gt;</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center">
+                    <div class="photo-border rounded-full">
+                        <img src="tu-foto.jpg" alt="Tu Nombre" class="w-64 h-64 rounded-full object-cover border-4 border-gray-900">
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-bold mb-4 text-blue-400">Hola, soy <span class="neon-text">Tu Nombre</span></h4>
+                    <p class="mb-6 text-lg">Desarrollador Full Stack apasionado por crear soluciones innovadoras y escalables. Con más de 5 años de experiencia, disfruto enfrentando nuevos desafíos y aprendiendo constantemente.</p>
+                    <div class="mb-6">
+                        <h5 class="text-xl font-semibold mb-2 text-blue-400">Mis habilidades incluyen:</h5>
+                        <ul class="grid grid-cols-2 gap-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>JavaScript</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Python</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>React</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Node.js</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>SQL</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Git</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-semibold mb-2 text-blue-400">Datos curiosos:</h5>
+                        <ul class="space-y-2">
+                            <li><i class="fas fa-coffee text-yellow-600 mr-2"></i>Adicto al café</li>
+                            <li><i class="fas fa-book text-indigo-400 mr-2"></i>Lector ávido de ciencia ficción</li>
+                            <li><i class="fas fa-gamepad text-red-500 mr-2"></i>Gamer en mis tiempos libres</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El resto del contenido del body permanece igual -->
+
+    <script>
+        // Código JavaScript anterior
+
+        // Animación para la foto
+        const photo = document.querySelector('.photo-border');
+        photo.addEventListener('mouseover', () => {
+            photo.style.transform = 'scale(1.05)';
+            photo.style.transition = 'transform 0.3s ease-in-out';
+        });
+        photo.addEventListener('mouseout', () => {
+            photo.style.transform = 'scale(1)';
+        });
+
+        // Animación para los elementos de la lista de habilidades
+        const skillItems = document.querySelectorAll('#sobre-mi li');
+        skillItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                item.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
+    </script>
+</body>
+</html>
