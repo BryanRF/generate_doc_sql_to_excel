@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio de Desarrollador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos anteriores... */
+
+        .skill-item {
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .skill-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .skill-description.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen font-mono">
+    <!-- El contenido anterior del body permanece igual -->
+
+    <section id="sobre-mi" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <!-- Contenido anterior de la sección "Sobre Mí" -->
+
+            <!-- Selector de Habilidades Interactivo -->
+            <div class="mt-16">
+                <h4 class="text-2xl font-bold mb-6 text-blue-400">Mis Habilidades Técnicas</h4>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="skill-item bg-gray-900 p-4 rounded-lg text-center cursor-pointer" data-skill="javascript">
+                        <i class="fab fa-js text-yellow-400 text-4xl mb-2"></i>
+                        <h5 class="text-lg font-semibold">JavaScript</h5>
+                    </div>
+                    <div class="skill-item bg-gray-900 p-4 rounded-lg text-center cursor-pointer" data-skill="python">
+                        <i class="fab fa-python text-blue-400 text-4xl mb-2"></i>
+                        <h5 class="text-lg font-semibold">Python</h5>
+                    </div>
+                    <div class="skill-item bg-gray-900 p-4 rounded-lg text-center cursor-pointer" data-skill="react">
+                        <i class="fab fa-react text-blue-500 text-4xl mb-2"></i>
+                        <h5 class="text-lg font-semibold">React</h5>
+                    </div>
+                    <div class="skill-item bg-gray-900 p-4 rounded-lg text-center cursor-pointer" data-skill="nodejs">
+                        <i class="fab fa-node-js text-green-500 text-4xl mb-2"></i>
+                        <h5 class="text-lg font-semibold">Node.js</h5>
+                    </div>
+                    <!-- Puedes agregar más habilidades siguiendo el mismo patrón -->
+                </div>
+                <div id="skill-description" class="mt-8 bg-gray-900 p-6 rounded-lg skill-description">
+                    <h5 id="skill-title" class="text-xl font-bold mb-4 text-blue-400"></h5>
+                    <p id="skill-text"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El resto del contenido del body permanece igual -->
+
+    <script>
+        // Código JavaScript anterior
+
+        // Selector de Habilidades Interactivo
+        const skillItems = document.querySelectorAll('.skill-item');
+        const skillDescription = document.getElementById('skill-description');
+        const skillTitle = document.getElementById('skill-title');
+        const skillText = document.getElementById('skill-text');
+
+        const skillDetails = {
+            javascript: {
+                title: "JavaScript",
+                description: "Amplia experiencia en JavaScript moderno (ES6+). Desarrollo de aplicaciones web interactivas y dinámicas. Uso de frameworks y librerías populares."
+            },
+            python: {
+                title: "Python",
+                description: "Desarrollo de aplicaciones backend y scripts de automatización. Experiencia en frameworks como Django y Flask. Análisis de datos y machine learning con bibliotecas como NumPy y Pandas."
+            },
+            react: {
+                title: "React",
+                description: "Creación de interfaces de usuario modernas y eficientes. Desarrollo de aplicaciones de una sola página (SPA). Manejo de estado con Redux y uso de hooks."
+            },
+            nodejs: {
+                title: "Node.js",
+                description: "Desarrollo de aplicaciones backend escalables. Creación de APIs RESTful. Integración con bases de datos y servicios externos."
+            }
+        };
+
+        skillItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const skill = item.getAttribute('data-skill');
+                skillTitle.textContent = skillDetails[skill].title;
+                skillText.textContent = skillDetails[skill].description;
+                skillDescription.classList.add('active');
+
+                // Resaltar la habilidad seleccionada
+                skillItems.forEach(i => i.classList.remove('ring-2', 'ring-blue-500'));
+                item.classList.add('ring-2', 'ring-blue-500');
+            });
+        });
+    </script>
+</body>
+</html>
