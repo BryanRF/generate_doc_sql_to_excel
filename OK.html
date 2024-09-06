@@ -1,138 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio de Desarrollador</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL a Excel - Diseño Profesional Oscuro</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
     <style>
-        /* Estilos anteriores... */
+      body {
+        background-color: #0f172a;
+        background-image: radial-gradient(
+            white,
+            rgba(255, 255, 255, 0.2) 2px,
+            transparent 40px
+          ),
+          radial-gradient(
+            white,
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent 30px
+          ),
+          radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+          radial-gradient(
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 30px
+          );
+        background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+        background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+        animation: backgroundScroll 60s linear infinite;
+      }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background-color: #58a6ff;
+      @keyframes backgroundScroll {
+        0% {
+          background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
         }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #58a6ff;
+        100% {
+          background-position: 550px 550px, 590px 610px, 680px 820px,
+            620px 650px;
         }
+      }
     </style>
-</head>
-<body class="bg-gray-900 text-gray-300 min-h-screen font-mono">
-    <!-- El contenido anterior del body permanece igual -->
-
-    <section id="sobre-mi" class="py-16 bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold mb-12 neon-text text-blue-400 text-center">&lt;Sobre Mí /&gt;</h3>
-            
-            <!-- Información personal y foto -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-                <!-- ... (Contenido anterior de esta sección) ... -->
-            </div>
-
-            <!-- Línea de tiempo de carrera -->
-            <div class="mb-16">
-                <h4 class="text-2xl font-bold mb-6 text-blue-400">Mi Trayectoria</h4>
-                <div class="relative pl-8">
-                    <div class="timeline-item relative pb-8">
-                        <h5 class="text-xl font-semibold text-blue-300">2024 - Presente</h5>
-                        <p class="text-gray-400">Desarrollador Senior en TechCorp</p>
-                    </div>
-                    <div class="timeline-item relative pb-8">
-                        <h5 class="text-xl font-semibold text-blue-300">2022 - 2024</h5>
-                        <p class="text-gray-400">Desarrollador Full Stack en InnovateTech</p>
-                    </div>
-                    <div class="timeline-item relative">
-                        <h5 class="text-xl font-semibold text-blue-300">2020 - 2022</h5>
-                        <p class="text-gray-400">Desarrollador Junior en StartupXYZ</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contador de proyectos y estadísticas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-center">
-                    <h5 class="text-3xl font-bold text-blue-400 mb-2"><span id="projectCount">0</span>+</h5>
-                    <p>Proyectos Completados</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-center">
-                    <h5 class="text-3xl font-bold text-blue-400 mb-2"><span id="clientCount">0</span>+</h5>
-                    <p>Clientes Satisfechos</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-center">
-                    <h5 class="text-3xl font-bold text-blue-400 mb-2"><span id="coffeeCount">0</span>+</h5>
-                    <p>Tazas de Café</p>
-                </div>
-            </div>
-
-            <!-- Testimonios -->
-            <div class="mb-16">
-                <h4 class="text-2xl font-bold mb-6 text-blue-400">Lo que dicen de mí</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
-                        <p class="mb-4">"Un desarrollador excepcional con una gran capacidad para resolver problemas complejos."</p>
-                        <p class="text-blue-400 font-semibold">- Ana García, CEO de TechCorp</p>
-                    </div>
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
-                        <p class="mb-4">"Su habilidad para aprender rápidamente y adaptarse a nuevas tecnologías es impresionante."</p>
-                        <p class="text-blue-400 font-semibold">- Carlos Rodríguez, CTO de InnovateTech</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Llamado a la acción para CV -->
-            <div class="text-center">
-                <a href="tu-cv.pdf" download class="inline-block bg-blue-600 text-gray-900 py-3 px-8 rounded-full hover:bg-blue-500 transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-download mr-2"></i>Descargar CV
-                </a>
-            </div>
+  </head>
+  <body class="min-h-screen font-sans text-cyan-300">
+    <header class="bg-gray-900 border-b border-cyan-600">
+      <nav class="container mx-auto px-6 py-3">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="/api/placeholder/40/40" alt="Logo" class="h-10 mr-3" />
+            <span class="font-semibold text-xl text-cyan-400"
+              >DataConverter Pro</span
+            >
+          </div>
+          <div>
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Inicio</a
+            >
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Acerca de</a
+            >
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Contacto</a
+            >
+          </div>
         </div>
-    </section>
-
-    <!-- El resto del contenido del body permanece igual -->
-
-    <script>
-        // Código JavaScript anterior
-
-        // Contadores animados
-        function animateCounter(elementId, target) {
-            let current = 0;
-            const element = document.getElementById(elementId);
-            const interval = setInterval(() => {
-                if (current < target) {
-                    current++;
-                    element.textContent = current;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 20);
-        }
-
-        // Iniciar animación de contadores cuando la sección es visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter('projectCount', 50);
-                    animateCounter('clientCount', 30);
-                    animateCounter('coffeeCount', 1000);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(document.querySelector('#sobre-mi'));
-    </script>
-</body>
+      </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8">
+      <h1 class="text-4xl font-bold text-center text-cyan-400 mb-12">
+        Transformación SQL a Excel
+      </h1>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-cyan-300">
+            Vista Previa del Proceso
+          </h2>
+          <div class="my-slider">
+            <div class="bg-gray-800 p-4 rounded-lg border border-cyan-600">
+              <h3 class="text-lg font-semibold mb-2 text-cyan-300">
+                Formato SQL de Entrada
+              </h3>
+              <pre
+                class="bg-gray-900 text-cyan-400 p-4 rounded overflow-x-auto border border-cyan-700"
+              >
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    fecha_registro DATE
+);
+              </pre>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg border border-cyan-600">
+              <h3 class="text-lg font-semibold mb-2 text-cyan-300">
+                Resultado en Excel
+              </h3>
+              <img
+                src="image.png"
+                alt="Excel Preview"
+                class="w-full rounded-lg shadow border border-cyan-700"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-gray-800 rounded-lg shadow-xl p-8 border border-cyan-600"
+        >
+          <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+            Inicia tu conversión
+          </h2>
+          <form>
+            <div class="mb-6">
+              <label for="sqlFile" class="block text-cyan-300 font-medium mb-2"
+                >Selecciona tu archivo SQL:</label
+              >
+              <div class="flex items-center justify-center w-full">
+                <label
+                  for="sqlFile"
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-cyan-600 border-dashed rounded-lg cursor-pointer bg-gray-700 hover:bg-gray-600 transition duration-300"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6"
+                  >
+                    <i
+                      class="fas fa-cloud-upload-alt text-4xl text-cyan-400 mb-3"
+                    ></i>
+                    <p class="mb-2 text-sm text-cyan-300">
+                      <span class="font-semibold">Haz clic para subir</span> o
+                      arrastra y suelta
+                    </p>
+                    <p class="text-xs text-cyan-400">SQL (máx. 10MB)</p>
+                  </div>
+                  <input
+                    id="sqlFile"
+                    type="file"
+                    class="hidden"
+                    accept=".sql"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                type="submit"
+                class="bg-cyan-600 hover:bg-cyan-700 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center"
+              >
+                <i class="fas fa-sync-alt mr-2"></i> Convertir a Excel
+              </button>
+              <a href="#" class="text-cyan-400 hover:text-cyan-300 text-sm"
+                >¿Necesitas ayuda?</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-gray-900 border-t border-cyan-600 mt-12">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <p class="text-cyan-400 text-sm">
+            &copy; 2024 DataConverter Pro. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <script>
+        var slider = tns({
+          container: ".my-slider",
+          items: 1,
+          slideBy: "page",
+          autoplay: true,
+          controls: false,
+          autoplayButtonOutput: false,
+          nav: true,
+        });
+      </script>
+    </footer>
+  </body>
 </html>

@@ -1,9 +1,20 @@
-import os
+from flask import Flask, request, send_file, jsonify
 import re
 import openpyxl
 from openpyxl.styles import Font, Alignment, PatternFill
-from typing import List, Dict, Optional
+from typing import List, Dict
 from dataclasses import dataclass, field
+from io import BytesIO
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello from Flask!'
+
+@app.route('/test')
+def test():
+    return 'Hello from test!'
 
 # Arrays para tipos de datos, constraints y tipos de columna
 DATA_TYPES = [
@@ -17,7 +28,7 @@ DATA_TYPES = [
     'UNIQUEIDENTIFIER',
     'XML',
     'JSON',
-    'ENUM'  # Añadido para soportar ENUM si es necesario
+    'ENUM'
 ]
 
 CONSTRAINT_TYPES = ['PRIMARY KEY', 'FOREIGN KEY', 'UNIQUE', 'CHECK', 'DEFAULT']
@@ -46,6 +57,7 @@ class TableObject:
     name: str
     columns: Dict[str, ColumnAttribute] = field(default_factory=dict)
 
+@dataclass
 class SQLParser:
     DEFAULT_VALUES = {
         'GETDATE()': 'GETDATE()',
@@ -175,16 +187,13 @@ class SQLParser:
     @classmethod
     def parse_data_type(cls, data_type_info: str) -> tuple:
         enum_values = []
-        # Improved ENUM detection
         enum_match = re.search(r'ENUM\s*\((.*?)\)(?:\s+DEFAULT\s+.*?)?(?:,|$)', data_type_info, re.IGNORECASE | re.DOTALL)
         if enum_match:
-            # Handle multiple lines and whitespace
             enum_str = enum_match.group(1)
             enum_values = [cls.clean_value(v) for v in re.findall(r"'([^']*)'", enum_str)]
             data_type = 'ENUM'
             length = ''
         else:
-            # Handle other data types
             parts = data_type_info.split('(', 1)
             data_type = parts[0].strip().upper()
             if len(parts) > 1:
@@ -215,7 +224,8 @@ class SQLParser:
 
 class ExcelGenerator:
     @staticmethod
-    def create_excel(tables: Dict[str, TableObject], output_file: str):
+    def create_excel(tables: Dict[str, TableObject]) -> BytesIO:
+        output = BytesIO()
         wb = openpyxl.Workbook()
         wb.remove(wb.active)
 
@@ -229,8 +239,9 @@ class ExcelGenerator:
             ExcelGenerator.fill_data(ws, table)
             ExcelGenerator.format_worksheet(ws)
 
-        wb.save(output_file)
-        os.startfile(output_file)
+        wb.save(output)
+        output.seek(0)
+        return output
 
     @staticmethod
     def set_headers(ws, headers):
@@ -244,7 +255,7 @@ class ExcelGenerator:
     def fill_data(ws, table):
         for row, (column_name, column) in enumerate(table.columns.items(), start=2):
             ws.cell(row=row, column=1, value=SQLParser.clean_value(column.name)).alignment = Alignment(horizontal='center')
-            ws.cell(row=row, column=2, value=SQLParser.clean_value(column.data_type)).alignment = Alignment(horizontal='center')
+            ws.cell(row=row, column=2, value=SQLParser.clean_value(column.data_type).split()[0]).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=3, value=SQLParser.clean_value(column.length)).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=4, value=SQLParser.clean_value(', '.join(column.column_type))).alignment = Alignment(horizontal='center')
             ws.cell(row=row, column=5, value=SQLParser.clean_value(column.default_value)).alignment = Alignment(horizontal='center')
@@ -268,16 +279,41 @@ class ExcelGenerator:
             max_length = max(len(str(cell.value)) for cell in column)
             ws.column_dimensions[column[0].column_letter].width = max_length + 2
 
-def main():
+@app.route('/upload-sql', methods=['POST'])
+def upload_sql():
     try:
-        with open('data.sql', 'r', encoding='utf-8') as file:
-            sql_content = file.read()
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part'}), 400
 
-        tables = SQLParser.parse_create_table(sql_content)
-        ExcelGenerator.create_excel(tables, 'diccionario_datos_avanzado.xlsx')
-        print("El diccionario de datos ha sido generado en 'diccionario_datos_avanzado.xlsx'")
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'}), 400
+
+        if file and file.filename.endswith('.sql'):
+            sql_content = file.read().decode('utf-8')
+            tables = SQLParser.parse_create_table(sql_content)
+
+            # Generar el archivo Excel en memoria
+            output = ExcelGenerator.create_excel(tables)
+            
+            # Enviamos el archivo al cliente
+            return send_file(
+                output,
+                as_attachment=True,
+                download_name='diccionario_datos_avanzado.xlsx',
+                mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+
+        return jsonify({'error': 'Invalid file type'}), 400
+
     except Exception as e:
-        print(f"Se produjo un error: {str(e)}")
+        # Registra el error si es necesario o envía una respuesta con el mensaje del error
+        return jsonify({'error': f"Ocurrió un error al procesar el archivo SQL: {str(e)}"}), 500
 
-if __name__ == "__main__":
+
+def main():
+    # app.run(debug=True)
+    pass
+
+if __name__ == '__main__':
     main()

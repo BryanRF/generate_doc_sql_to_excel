@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL a Excel - Diseño Profesional Oscuro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+    <style>
+      body {
+        background-color: #0f172a;
+      }
+      #galaxy-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen font-sans text-cyan-300">
+    <canvas id="galaxy-bg"></canvas>
+    <header class="bg-gray-900 bg-opacity-80 border-b border-cyan-600">
+      <nav class="container mx-auto px-6 py-3">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="/api/placeholder/40/40" alt="Logo" class="h-10 mr-3" />
+            <span class="font-semibold text-xl text-cyan-400"
+              >DataConverter Pro</span
+            >
+          </div>
+          <div>
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Inicio</a
+            >
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Acerca de</a
+            >
+            <a href="#" class="text-cyan-300 hover:text-cyan-100 px-3 py-2"
+              >Contacto</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8">
+      <h1 class="text-4xl font-bold text-center text-cyan-400 mb-12">
+        Transformación SQL a Excel
+      </h1>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-cyan-300">
+            Vista Previa del Proceso
+          </h2>
+          <div class="my-slider">
+            <div
+              class="bg-gray-800 bg-opacity-80 p-4 rounded-lg border border-cyan-600"
+            >
+              <h3 class="text-lg font-semibold mb-2 text-cyan-300">
+                Formato SQL de Entrada
+              </h3>
+              <pre
+                class="bg-gray-900 bg-opacity-80 text-cyan-400 p-4 rounded overflow-x-auto border border-cyan-700"
+              >
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    fecha_registro DATE
+);
+              </pre>
+            </div>
+            <div
+              class="bg-gray-800 bg-opacity-80 p-4 rounded-lg border border-cyan-600"
+            >
+              <h3 class="text-lg font-semibold mb-2 text-cyan-300">
+                Resultado en Excel
+              </h3>
+              <img
+                src="image.png"
+                alt="Excel Preview"
+                class="w-full rounded-lg shadow border border-cyan-700"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-gray-800 bg-opacity-80 rounded-lg shadow-xl p-8 border border-cyan-600"
+        >
+          <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+            Inicia tu conversión
+          </h2>
+          <form id="uploadForm">
+            <div class="mb-6">
+              <label for="sqlFile" class="block text-cyan-300 font-medium mb-2"
+                >Selecciona tu archivo SQL:</label
+              >
+              <div class="flex items-center justify-center w-full">
+                <label
+                  for="sqlFile"
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-cyan-600 border-dashed rounded-lg cursor-pointer bg-gray-700 bg-opacity-50 hover:bg-opacity-70 transition duration-300"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6"
+                  >
+                    <i
+                      class="fas fa-cloud-upload-alt text-4xl text-cyan-400 mb-3"
+                    ></i>
+                    <p class="mb-2 text-sm text-cyan-300">
+                      <span class="font-semibold">Haz clic para subir</span> o
+                      arrastra y suelta
+                    </p>
+                    <p class="text-xs text-cyan-400">SQL (máx. 10MB)</p>
+                  </div>
+                  <input
+                    id="sqlFile"
+                    name="file"
+                    type="file"
+                    class="hidden"
+                    accept=".sql"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                type="submit"
+                class="bg-cyan-600 hover:bg-cyan-700 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center"
+              >
+                <i class="fas fa-sync-alt mr-2"></i> Convertir a Excel
+              </button>
+              <a href="#" class="text-cyan-400 hover:text-cyan-300 text-sm"
+                >¿Necesitas ayuda?</a
+              >
+            </div>
+          </form>
+          <div id="message" class="mt-4 text-center"></div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-gray-900 bg-opacity-80 border-t border-cyan-600 mt-12">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <p class="text-cyan-400 text-sm">
+            &copy; 2024 DataConverter Pro. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <script>
+        var slider = tns({
+          container: ".my-slider",
+          items: 1,
+          slideBy: "page",
+          autoplay: true,
+          controls: false,
+          autoplayButtonOutput: false,
+          nav: true,
+        });
+
+        document
+          .getElementById("uploadForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var formData = new FormData();
+            var fileInput = document.getElementById("sqlFile");
+            formData.append("file", fileInput.files[0]);
+
+            fetch("https://backportfolio.pythonanywhere.com/upload-sql", {
+              method: "POST",
+              body: formData,
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  return response.json().then((err) => {
+                    throw err;
+                  });
+                }
+                return response.blob();
+              })
+              .then((blob) => {
+                var url = window.URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "diccionario_datos_avanzado.xlsx";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                document.getElementById("message").innerHTML =
+                  '<p class="text-green-400">¡Conversión exitosa! Descargando archivo Excel...</p>';
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                document.getElementById(
+                  "message"
+                ).innerHTML = `<p class="text-red-400">Error: ${
+                  error.error || "Ocurrió un error durante la conversión."
+                }</p>`;
+              });
+          });
+
+        // Galaxy background effect
+        const canvas = document.getElementById("galaxy-bg");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const properties = {
+          bgColor: "rgba(15, 23, 42, 1)",
+          particleColor: "rgba(0, 255, 255, 0.5)",
+          particleRadius: 3,
+          particleCount: 60,
+          particleMaxVelocity: 0.5,
+          lineLength: 150,
+          particleLife: 6,
+        };
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.velocityX =
+              Math.random() * (properties.particleMaxVelocity * 2) -
+              properties.particleMaxVelocity;
+            this.velocityY =
+              Math.random() * (properties.particleMaxVelocity * 2) -
+              properties.particleMaxVelocity;
+            this.life = Math.random() * properties.particleLife * 60;
+          }
+          position() {
+            (this.x + this.velocityX > canvas.width && this.velocityX > 0) ||
+            (this.x + this.velocityX < 0 && this.velocityX < 0)
+              ? (this.velocityX *= -1)
+              : this.velocityX;
+            (this.y + this.velocityY > canvas.height && this.velocityY > 0) ||
+            (this.y + this.velocityY < 0 && this.velocityY < 0)
+              ? (this.velocityY *= -1)
+              : this.velocityY;
+            this.x += this.velocityX;
+            this.y += this.velocityY;
+          }
+          reDraw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, properties.particleRadius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fillStyle = properties.particleColor;
+            ctx.fill();
+          }
+          reCalculateLife() {
+            if (this.life < 1) {
+              this.x = Math.random() * canvas.width;
+              this.y = Math.random() * canvas.height;
+              this.velocityX =
+                Math.random() * (properties.particleMaxVelocity * 2) -
+                properties.particleMaxVelocity;
+              this.velocityY =
+                Math.random() * (properties.particleMaxVelocity * 2) -
+                properties.particleMaxVelocity;
+              this.life = Math.random() * properties.particleLife * 60;
+            }
+            this.life--;
+          }
+        }
+
+        function reDrawBackground() {
+          ctx.fillStyle = properties.bgColor;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawLines() {
+          let x1, y1, x2, y2, length, opacity;
+          for (let i in particles) {
+            for (let j in particles) {
+              x1 = particles[i].x;
+              y1 = particles[i].y;
+              x2 = particles[j].x;
+              y2 = particles[j].y;
+              length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+              if (length < properties.lineLength) {
+                opacity = 1 - length / properties.lineLength;
+                ctx.lineWidth = "0.5";
+                ctx.strokeStyle = `rgba(0, 255, 255, ${opacity})`;
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.closePath();
+                ctx.stroke();
+              }
+            }
+          }
+        }
+
+        function reDrawParticles() {
+          for (let i in particles) {
+            particles[i].reCalculateLife();
+            particles[i].position();
+            particles[i].reDraw();
+          }
+        }
+
+        function loop() {
+          reDrawBackground();
+          reDrawParticles();
+          drawLines();
+          requestAnimationFrame(loop);
+        }
+
+        function init() {
+          for (let i = 0; i < properties.particleCount; i++) {
+            particles.push(new Particle());
+          }
+          loop();
+        }
+
+        init();
+
+        window.addEventListener("resize", function () {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+      </script>
+    </footer>
+  </body>
+</html>

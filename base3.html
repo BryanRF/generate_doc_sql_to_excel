@@ -3,273 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brayan - Ingeniero de Sistemas</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <style>
-      :root {
-        --bg-color: #0d1117;
-        --text-color: #c9d1d9;
-        --primary-color: #58a6ff;
-        --secondary-color: #8b949e;
-        --accent-cyan: #00ffff;
-        --accent-purple: #8a2be2;
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
-          Helvetica, Arial, sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      header {
-        text-align: center;
-        padding: 2rem 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-      }
-
-      .subtitle {
-        font-size: 1.5rem;
-        color: var(--secondary-color);
-      }
-
-      .floating-shapes {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-
-      .floating-shapes div {
-        position: absolute;
-        background-color: var(--accent-cyan);
-        opacity: 0.1;
-        border-radius: 50%;
-      }
-
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        margin: 2rem 0;
-      }
-
-      .skill {
-        background-color: var(--secondary-color);
-        color: var(--bg-color);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-      }
-
-      .skill:hover {
-        transform: translateY(-5px);
-        background-color: var(--accent-purple);
-      }
-
-      .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .project {
-        background-color: #161b22;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .project:hover {
-        transform: translateY(-10px);
-      }
-
-      .project img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-
-      .project-info {
-        padding: 1.5rem;
-      }
-
-      .project h3 {
-        margin-top: 0;
-        color: var(--primary-color);
-      }
-
-      .project-links {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
-      }
-
-      .project-links a {
-        text-decoration: none;
-        color: var(--accent-cyan);
-        font-weight: bold;
-        transition: color 0.3s ease;
-      }
-
-      .project-links a:hover {
-        color: var(--accent-purple);
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 3rem;
-        padding: 1rem 0;
-        background-color: #161b22;
-      }
-
-      #typed-text {
-        min-height: 2em;
-      }
-    </style>
+    <meta
+      name="description"
+      content="Portafolio de Juan, un desarrollador web especializado en sitios modernos y responsivos."
+    />
+    <title>Portafolio de Juan</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="floating-shapes"></div>
-        <h1>Brayan</h1>
-        <p class="subtitle">Ingeniero de Sistemas</p>
-        <div id="typed-text"></div>
-      </header>
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-lg p-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-gray-800">Juan Portfolio</h1>
+        <nav>
+          <ul class="flex space-x-6">
+            <li>
+              <a href="#projects" class="hover:text-blue-500">Proyectos</a>
+            </li>
+            <li><a href="#about" class="hover:text-blue-500">Sobre Mí</a></li>
+            <li><a href="#contact" class="hover:text-blue-500">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-      <section class="skills">
-        <div class="skill">Python</div>
-        <div class="skill">Vue.js</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">HTML/CSS</div>
-        <div class="skill">Git</div>
-      </section>
+    <!-- Hero Section -->
+    <section
+      class="bg-gradient-to-r from-blue-500 to-green-500 text-white py-20"
+    >
+      <div class="container mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-4">¡Hola! Soy Juan</h2>
+        <p class="text-lg mb-8">
+          Desarrollador web especializado en la creación de sitios modernos,
+          responsivos y centrados en el usuario.
+        </p>
+        <a
+          href="#projects"
+          class="bg-white text-blue-500 px-6 py-3 rounded-full shadow-lg hover:bg-blue-50 transition"
+          >Ver Proyectos</a
+        >
+      </div>
+    </section>
 
-      <section class="projects">
-        <div class="project">
-          <img src="image.png" alt="Proyecto 1" />
-          <div class="project-info">
-            <h3>Proyecto 1</h3>
-            <p>Descripción breve del proyecto 1.</p>
-            <div class="project-links">
-              <a href="#" target="_blank">README</a>
-              <a href="#" target="_blank">Demo</a>
-            </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-100">
+      <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-12">
+          Proyectos Destacados
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Project 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="project1.jpg"
+              alt="Proyecto 1"
+              class="w-full h-48 object-cover rounded-t-lg"
+            />
+            <h4 class="text-2xl font-bold mt-4">Proyecto 1</h4>
+            <p class="mt-2 text-gray-600">
+              Descripción breve del proyecto 1. Tecnologías utilizadas: HTML,
+              CSS, JavaScript.
+            </p>
+            <a
+              href="#"
+              class="text-blue-500 mt-4 inline-block hover:text-blue-600"
+              >Ver más</a
+            >
+          </div>
+          <!-- Project 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="project2.jpg"
+              alt="Proyecto 2"
+              class="w-full h-48 object-cover rounded-t-lg"
+            />
+            <h4 class="text-2xl font-bold mt-4">Proyecto 2</h4>
+            <p class="mt-2 text-gray-600">
+              Descripción breve del proyecto 2. Tecnologías utilizadas: React,
+              Node.js.
+            </p>
+            <a
+              href="#"
+              class="text-blue-500 mt-4 inline-block hover:text-blue-600"
+              >Ver más</a
+            >
+          </div>
+          <!-- Project 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="project3.jpg"
+              alt="Proyecto 3"
+              class="w-full h-48 object-cover rounded-t-lg"
+            />
+            <h4 class="text-2xl font-bold mt-4">Proyecto 3</h4>
+            <p class="mt-2 text-gray-600">
+              Descripción breve del proyecto 3. Tecnologías utilizadas: Vue.js,
+              Firebase.
+            </p>
+            <a
+              href="#"
+              class="text-blue-500 mt-4 inline-block hover:text-blue-600"
+              >Ver más</a
+            >
           </div>
         </div>
-        <div class="project">
-          <img src="image.png" alt="Proyecto 2" />
-          <div class="project-info">
-            <h3>Proyecto 2</h3>
-            <p>Descripción breve del proyecto 2.</p>
-            <div class="project-links">
-              <a href="#" target="_blank">README</a>
-              <a href="#" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-        <div class="project">
-          <img src="image.png" alt="Proyecto 3" />
-          <div class="project-info">
-            <h3>Proyecto 3</h3>
-            <p>Descripción breve del proyecto 3.</p>
-            <div class="project-links">
-              <a href="#" target="_blank">README</a>
-              <a href="#" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
-    <footer>
-      <p>
-        &copy; 2024 Brayan - Ingeniero de Sistemas. Todos los derechos
-        reservados.
-      </p>
+    <!-- About Me Section -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-12">Sobre Mí</h3>
+        <div
+          class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16"
+        >
+          <img
+            src="profile.jpg"
+            alt="Juan"
+            class="w-48 h-48 rounded-full object-cover shadow-lg"
+          />
+          <p class="text-lg text-gray-700 text-center md:text-left">
+            Soy Juan, un desarrollador web apasionado por crear experiencias
+            digitales innovadoras. Con experiencia en tecnologías frontend y
+            backend, me esfuerzo por ofrecer soluciones optimizadas y
+            visualmente atractivas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+      <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-12">Contacto</h3>
+        <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <div class="mb-6">
+            <label for="name" class="block text-gray-700 font-bold"
+              >Nombre:</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-full mt-2 p-3 border rounded-lg"
+              placeholder="Tu nombre"
+            />
+          </div>
+          <div class="mb-6">
+            <label for="email" class="block text-gray-700 font-bold"
+              >Email:</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full mt-2 p-3 border rounded-lg"
+              placeholder="Tu correo electrónico"
+            />
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block text-gray-700 font-bold"
+              >Mensaje:</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              class="w-full mt-2 p-3 border rounded-lg"
+              rows="5"
+              placeholder="Tu mensaje"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-500 text-white py-3 rounded-lg shadow-lg hover:bg-blue-600 transition"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center text-white">
+      <p>&copy; 2024 Juan Portfolio. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-      // Animación de formas flotantes
-      function createFloatingShapes() {
-        const container = document.querySelector(".floating-shapes");
-        const shapes = 20;
-
-        for (let i = 0; i < shapes; i++) {
-          const shape = document.createElement("div");
-          const size = Math.random() * 50 + 10;
-          shape.style.width = `${size}px`;
-          shape.style.height = `${size}px`;
-          shape.style.left = `${Math.random() * 100}%`;
-          shape.style.top = `${Math.random() * 100}%`;
-
-          container.appendChild(shape);
-
-          gsap.to(shape, {
-            x: `random(-50, 50)`,
-            y: `random(-50, 50)`,
-            duration: `random(5, 10)`,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-        }
-      }
-
-      // Efecto de escritura
-      function typeWriter(text, element, speed = 50) {
-        let i = 0;
-        function type() {
-          if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-          }
-        }
-        type();
-      }
-
-      // Inicializar animaciones
-      document.addEventListener("DOMContentLoaded", () => {
-        createFloatingShapes();
-        const typedText = document.getElementById("typed-text");
-        typeWriter("Desarrollando soluciones innovadoras", typedText);
-      });
-
-      // Animación de entrada para proyectos
-      gsap.from(".project", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects",
-          start: "top 80%",
-        },
-      });
-    </script>
   </body>
 </html>
